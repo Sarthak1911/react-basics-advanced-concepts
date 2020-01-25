@@ -33,15 +33,15 @@ Conceptually, components are like JavaScript functions. They accept arbitrary in
     - For example, <div /> represents an HTML div tag, but <Welcome /> represents a component and requires Welcome to be in scope.
 - Always name props from the components pointof view and not the context. 
   - We have Comment component which resides in AuthorInfo component, so instead of naming the props name like author use a name like user.
-  ``` 
-    <AuthorInfo>
-      <Comment author={author}>
-    </AuthorInfo> 
-    
-    <AuthorInfo>
-      <Comment user={author}>
-    </AuthorInfo> 
-  ```
+``` 
+  <AuthorInfo>
+    <Comment author={author}>
+  </AuthorInfo> 
+
+  <AuthorInfo>
+    <Comment user={author}>
+  </AuthorInfo> 
+```
 - Props are read-only
   - All React components must act like pure functions with respect to their props (Pure functions nver change their inputs and always return same results for their inputs.)
   - State allows React components to change their outputs without affecting the above menthoined rule.
