@@ -45,3 +45,49 @@ Conceptually, components are like JavaScript functions. They accept arbitrary in
 - Props are read-only
   - All React components must act like pure functions with respect to their props (Pure functions nver change their inputs and always return same results for their inputs.)
   - State allows React components to change their outputs without affecting the above menthoined rule.
+  
+## State and Lifecycle
+State is similar to props, but it is private and fully controlled by the component.
+
+- Always initialize state in the constructor using `this.state = //State value`
+```
+//Wrong way
+state = {
+  name: 'Sam',
+  age: '24'
+}
+
+//Right way
+constructor(props){
+  super(props)
+  this.state = {
+    name: 'Sam',
+    age: '24'
+  }
+}
+```
+- Class components should always call the base constructor with props. (Refer the above constructor code)
+- The componentDidMount() method runs after the component output has been rendered to the DOM. It's good place to make HTTP calls.
+- The componentWillUnmount() method runs when the DOM produced by the component is removed. It's a good place to free up resources i.e. like timers etc.
+- Update state only using `setState({ value: value })` method. `this.state = value` is wrong way of updating state. The later will not re-render the component, hence the DOM output of the component will remain inconsistent with the state.
+- State updates are done asynchronously 
+  - React may batch multiple setState() calls into a single update for performance.
+  - Because this.props and this.state may be updated asynchronously, you should not rely on their values for calculating the next state.
+  ```
+  // Wrong
+  this.setState({
+  counter: this.state.counter + this.props.increment,
+  });
+  ```
+  - To fix it, use a second form of setState() that accepts a function rather than an object. That function will receive the previous state as the first argument, and the props at the time the update is applied as the second argument:
+  ```
+  // Correct
+  this.setState((state, props) => ({
+    counter: state.counter + props.increment
+  }));
+  ```
+- React merges the states and the merging is shallow i.e. only the variable updates made to the state will changed, rest of the state variables will remain as is.
+
+  
+  
+
