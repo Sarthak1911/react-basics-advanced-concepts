@@ -88,6 +88,102 @@ constructor(props){
   ```
 - React merges the states and the merging is shallow i.e. only the variable updates made to the state will changed, rest of the state variables will remain as is.
 
+## Handling events
+Its same as handling events in DOM i.e. `onclick` becomes `onClick`
+
+### Synthetic Events
+```
+function ActionLink() {
+  function handleClick(e) {
+    e.preventDefault();
+    console.log('The link was clicked.');
+  }
+
+  return (
+    <a href="#" onClick={handleClick}>
+      Click me
+    </a>
+  );
+}
+```
+Here 'e' is a synthetic event.
+
+### 'this' problem
+
+```
+function ActionLink() {
+  function handleClick(e) {
+    e.preventDefault();
+    console.log(this);
+  }
+
+  return (
+    <a href="#" onClick={handleClick}>
+      Click me
+    </a>
+  );
+}
+```
+
+- Here the value of this will be undefined, as JavaScript class methods are not bound by default.
+- So if one refers to call a method without (), one should bind that method. It happensin the constructor.
+```
+    constructor(props) {
+    super(props);
+    this.state = {isToggleOn: true};
+
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this);
+  }
+ ```
+ - If one prefers not to use bind(): one can use
+  - Public class field syntax i.e. arrow functions
+  ```
+  class LoggingButton extends React.Component {
+  // This syntax ensures `this` is bound within handleClick.
+  // Warning: this is *experimental* syntax.
+  handleClick = () => {
+    console.log('this is:', this);
+  }
+
+  render() {
+      return (
+        <button onClick={this.handleClick}>
+          Click me
+        </button>
+      );
+    }
+  }
+  ```
+  - arrow function in the call back itself. Problem with using the syntax below is that, it will create different callbacks each time the component renders. And this callback is passed as props to its child component, which can lead to re-rendering children components.
+  ```
+  class LoggingButton extends React.Component {
+    handleClick() {
+      console.log('this is:', this);
+    }
+
+    render() {
+      // This syntax ensures `this` is bound within handleClick
+      return (
+        <button onClick={(e) => this.handleClick(e)}>
+          Click me
+        </button>
+      );
+    }
+  }
+  ```
+### Passing Arguments to Event Handlers
+All the three ways given below are correct way of passing argumets to event handlers. Second being the most efficent, there e is passed by default, no need to mention it like the first one.
+```
+<button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
+<button onClick={() => this.deleteRow(id)}>Delete Row</button>
+<button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
+```
+  
+ 
+
+
+
   
   
 
