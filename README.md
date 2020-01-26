@@ -179,7 +179,18 @@ All the three ways given below are correct way of passing argumets to event hand
 <button onClick={() => this.deleteRow(id)}>Delete Row</button>
 <button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
 ```
-  
+## Conditional Rendering 
+It is same as that of JavaScript.
+
+## List and keys
+
+- Use the map() method in order to render lists in React.
+- Each and every list-item needs to be identfied uniquely by key. This helps React keep tabs on the changes and quickly update them.
+- Use a value which uniquely identifies the list-item as keys.
+- A good rule of thumb is that elements inside the map() call need keys.
+- Two different arrays an have the same keys i.e. Keys Must Only Be Unique Among Siblings.
+- If you choose not to assign an explicit key to list items then React will default to using indexes as keys.
+
  
 
 
