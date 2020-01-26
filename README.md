@@ -191,8 +191,17 @@ It is same as that of JavaScript.
 - Two different arrays an have the same keys i.e. Keys Must Only Be Unique Among Siblings.
 - If you choose not to assign an explicit key to list items then React will default to using indexes as keys.
 
+ ## Forms
  
-
+ ### Controlled components
+ When an input component value is controlled by component state, then that component is called controlled component.
+ Refer documentation for more info.
+ 
+ ## Lifting up state
+ 
+ - In React, when a state needs to be shared among multiple components, we perfom a procedure called 'Lifting up state'. 
+ - It is basically moving the state up to the closest ancestor who need it.
+ - Then the state values are passed down the children as required using props.
 
 
   
