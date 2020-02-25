@@ -266,29 +266,26 @@ export default ErrorBoundry;
     - One can initialize state in a constructor.
   - Dont's with constructor()
     - Never make HTTP calls
-    - Storing data in local storage of the browser.
-  
+    - Storing data in local storage of the browser. 
 - getDerivedStateFromProps(props, state)
   - It is used if one has to sync the state of the class component when the props change
   - Not used alot, only used in niche cases.
-- Do's with getDerivedStateFromProps(props, state)
-  - Sync State
-Dont's with getDerivedStateFromProps(props, state)
-  - Never make HTTP calls
-  - Storing data in local storage of the browser.
-  
+  - Do's with getDerivedStateFromProps(props, state)
+    - Sync State
+  - Dont's with getDerivedStateFromProps(props, state)
+    - Never make HTTP calls
+    - Storing data in local storage of the browser. 
 - render()
   - This hooks returns JSX
-Dont's with render()
-  - Never make HTTP calls
-  - Storing data in local storage of the browser.
-  
+  - Dont's with render()
+    - Never make HTTP calls
+    - Storing data in local storage of the browser.
 - componentDidMount()
   - It's the last hook that runs during the creation stage of the component.
-- Do's with componentDidMount()
-  - Make HTTP calls
-Dont's with componentDidMount()
-  - Make synchronous requests. Always use async requests.
+  - Do's with componentDidMount()
+    - Make HTTP calls
+  - Dont's with componentDidMount()
+    - Make synchronous requests. Always use async requests.
 
 Order of lifecycle hooks execution
 :[Imgur](https://i.imgur.com/iJ3m6uH.png)
