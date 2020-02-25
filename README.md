@@ -288,7 +288,7 @@ export default ErrorBoundry;
     - Make synchronous requests. Always use async requests.
 
 Order of lifecycle hooks execution
-:[Imgur](https://i.imgur.com/iJ3m6uH.png)
+![Order of execution](https://i.imgur.com/iJ3m6uH.png)
 
   
   
