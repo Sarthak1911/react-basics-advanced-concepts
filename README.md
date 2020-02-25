@@ -203,7 +203,27 @@ It is same as that of JavaScript.
  - It is basically moving the state up to the closest ancestor who need it.
  - Then the state values are passed down the children as required using props.
 
+## React Hooks
+React hooks were introduced in React 16. Using hooks one can manage state in a functional component.
 
+### useState() 
+This react hook is used to initialize state in a functional component.
+```
+const [state, setState] = useState({ state: stateValue });
+```
+One has to pass state as an argument to the useState() hook. Here the state can be an object, array, string etc. The function returns exactly two items i.e. first : the state, second : function to set the state.
+
+NOTE: Important thing to note is, useState() replaces the state unlike this.setState() which updates the state and keeps the unaffected elements as is.
+
+```
+const [state, setState] = useState({{ name: Jon, age: 50 }, "Other state"});
+//So here the state is {{ name: Jon, age: 50 }, "Other state"}
+//Lets setState on this state object with { name: Jon, age: 20 }
+setState({ name: Jon, age: 50 });
+//After the updation state will become { name: Jon, age: 50 }
+//It replaces the state
+```
+So its recommended to have different useState() hooks for different states in a functional component.
   
   
 
