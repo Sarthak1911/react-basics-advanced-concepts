@@ -263,10 +263,10 @@ export default ErrorBoundry;
   - One has to always call constructor() with props.
   - If constructor() is not defined, react will call it for you automatically.
 Do's with constructor()
-  - One can initialize state in a constructor.
+ - One can initialize state in a constructor.
 Dont's with constructor()
-  - Never make HTTP calls
-  - Storing data in local storage of the browser.
+ - Never make HTTP calls
+ - Storing data in local storage of the browser.
   
 - getDerivedStateFromProps(props, state)
   - It is used if one has to sync the state of the class component when the props change
