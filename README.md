@@ -224,6 +224,36 @@ setState({ name: Jon, age: 50 });
 //It replaces the state
 ```
 So its recommended to have different useState() hooks for different states in a functional component.
+
+## Error Boundries in React 16.^
+Only use when a component may throw an error that the developer cannot control.
+```
+import React, { Component } from "react";
+class ErrorBoundry extends Component {
+  state = {
+    hasError: false,
+    errorInfo: ""
+  };
+
+  componentDidCatch(error) {
+    if (error) this.setState({ hasError: true, info: error });
+  }
+
+  displayContent() {
+    if (this.state.hasError) {
+      return <h2>{this.state.errorInfo}</h2>;
+    } else {
+      return this.props.children;
+    }
+  }
+
+  render() {
+    return this.displayContent();
+  }
+}
+
+export default ErrorBoundry;
+```
   
   
 
